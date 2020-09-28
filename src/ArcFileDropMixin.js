@@ -108,7 +108,7 @@ const mxFunction = base => {
         return;
       }
       cancelEvent(e);
-      this.dragging = false;
+      this.dragging = true;
     }
     
     /**

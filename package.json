@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/arc-filesystem",
   "description": "A module with components and mixin function that adds support for filesystem processing in Advanced REST client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
