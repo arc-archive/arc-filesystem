@@ -64,3 +64,21 @@
 
 
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/advanced-rest-client/arc-filesystem/compare/0.1.0...0.1.2) (2020-10-07)
+
+### Update
+
+* updating ARC events [ddc9e6c](https://github.com/advanced-rest-client/arc-filesystem/commit/ddc9e6c054cc48c5d61376b007797d7aff060992) by Pawel
+
+
+### Bug Fixes
+
+* fixing draggable state set [6cc8156](https://github.com/advanced-rest-client/arc-filesystem/commit/6cc8156494edce759623b19af612013427845f01) by Pawel
+
+
+### Testing
+
+* updated Travis configuration to connect to Sauce Labs [795e329](https://github.com/advanced-rest-client/arc-filesystem/commit/795e32958e7b3cd2232027e46fc16834231fedaa) by Pawel
+
+
