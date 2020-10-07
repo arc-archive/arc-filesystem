@@ -163,7 +163,7 @@ const mxFunction = base => {
       const id = new Date().toISOString();
       ProcessEvents.loadingstart(this, id, 'Processing file data');
       try {
-        await ImportEvents.processfile(this, file);
+        await ImportEvents.processFile(this, file);
       } catch (cause) {
         ProcessEvents.loadingerror(this, id, cause);
       }
@@ -177,11 +177,11 @@ const mxFunction = base => {
      * @return {Promise<void>}
      */
     async [notifyApiParser](file) {
-      const result = await RestApiEvents.processfile(this, file);
+      const result = await RestApiEvents.processFile(this, file);
       if (!result) {
         throw new Error('API processor not available');
       }
-      RestApiEvents.dataready(this, result.model, result.type);
+      RestApiEvents.dataReady(this, result.model, result.type);
     }
   }
   return ArcFileDropMixinImpl;

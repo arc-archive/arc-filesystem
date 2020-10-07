@@ -116,10 +116,10 @@ describe('ArcFileDropMixin', () => {
       assert.isFalse(spy.called);
     });
 
-    it(`dispatches ${DataImportEventTypes.processfile} event`, () => {
+    it(`dispatches ${DataImportEventTypes.processFile} event`, () => {
       const e = createEventObject(file);
       const spy = sinon.spy();
-      element.addEventListener(DataImportEventTypes.processfile, spy);
+      element.addEventListener(DataImportEventTypes.processFile, spy);
       element[dropHandler](e);
       assert.isTrue(spy.calledOnce);
     });
@@ -128,7 +128,7 @@ describe('ArcFileDropMixin', () => {
       const e = createEventObject(file);
       const spy = sinon.spy();
       element.addEventListener(ProcessEventTypes.loadingerror, spy);
-      element.addEventListener(DataImportEventTypes.processfile, (ev) => {
+      element.addEventListener(DataImportEventTypes.processFile, (ev) => {
         e.preventDefault();
         // @ts-ignore
         ev.detail.result = Promise.reject(new Error('test'));
@@ -141,7 +141,7 @@ describe('ArcFileDropMixin', () => {
       const e = createEventObject(file);
       const spy = sinon.spy();
       element.addEventListener(ProcessEventTypes.loadingerror, spy);
-      element.addEventListener(DataImportEventTypes.processfile, (ev) => {
+      element.addEventListener(DataImportEventTypes.processFile, (ev) => {
         e.preventDefault();
         // @ts-ignore
         ev.detail.result = Promise.resolve();
@@ -167,10 +167,10 @@ describe('ArcFileDropMixin', () => {
       });
     }
 
-    it(`dispatches ${RestApiEventTypes.dataready} when finished`, async () => {
+    it(`dispatches ${RestApiEventTypes.dataReady} when finished`, async () => {
       const spy = sinon.spy();
-      element.addEventListener(RestApiEventTypes.dataready, spy);
-      element.addEventListener(RestApiEventTypes.processfile, handler);
+      element.addEventListener(RestApiEventTypes.dataReady, spy);
+      element.addEventListener(RestApiEventTypes.processFile, handler);
       await element[notifyApiParser](file);
       assert.isTrue(spy.called, 'Event dispatched');
       assert.deepEqual(spy.args[0][0].detail, { model: 'test-value', type: 'x-api' });
@@ -207,11 +207,11 @@ describe('ArcFileDropMixin', () => {
 
     beforeEach(async () => {
       element = await basicFixture();
-      element.addEventListener(RestApiEventTypes.processfile, apiHandler);
+      element.addEventListener(RestApiEventTypes.processFile, apiHandler);
     });
 
     afterEach(() => {
-      element.removeEventListener(RestApiEventTypes.processfile, apiHandler);
+      element.removeEventListener(RestApiEventTypes.processFile, apiHandler);
     });
 
     [
@@ -232,19 +232,19 @@ describe('ArcFileDropMixin', () => {
       });
     });
 
-    it(`dispatches ${DataImportEventTypes.processfile} for other types`, async () => {
+    it(`dispatches ${DataImportEventTypes.processFile} for other types`, async () => {
       const spy = sinon.spy();
-      element.addEventListener(DataImportEventTypes.processfile, spy);
-      element.addEventListener(DataImportEventTypes.processfile, importHandler);
+      element.addEventListener(DataImportEventTypes.processFile, spy);
+      element.addEventListener(DataImportEventTypes.processFile, importHandler);
       files = [new Blob(['{}'], { type: acceptedType })];
       // @ts-ignore
       await element[processEntries](files);
-      element.removeEventListener(DataImportEventTypes.processfile, importHandler);
+      element.removeEventListener(DataImportEventTypes.processFile, importHandler);
       assert.isTrue(spy.called);
     });
 
-    it(`dispatches process error when ${DataImportEventTypes.processfile} error`, async () => {
-      element.addEventListener(DataImportEventTypes.processfile, (e) => {
+    it(`dispatches process error when ${DataImportEventTypes.processFile} error`, async () => {
+      element.addEventListener(DataImportEventTypes.processFile, (e) => {
         // @ts-ignore
         e.detail.result = Promise.reject(new Error('test'));
       });
