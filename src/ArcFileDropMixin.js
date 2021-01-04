@@ -174,14 +174,9 @@ const mxFunction = base => {
      * In ARC electron it is `@advanced-rest-client/electron-amf-service`
      * node module. In other it might be other component.
      * @param {File} file User file.
-     * @return {Promise<void>}
      */
-    async [notifyApiParser](file) {
-      const result = await RestApiEvents.processFile(this, file);
-      if (!result) {
-        throw new Error('API processor not available');
-      }
-      RestApiEvents.dataReady(this, result.model, result.type);
+    [notifyApiParser](file) {
+      RestApiEvents.processFile(this, file);
     }
   }
   return ArcFileDropMixinImpl;

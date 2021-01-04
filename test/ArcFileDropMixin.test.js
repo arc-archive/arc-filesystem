@@ -159,31 +159,11 @@ describe('ArcFileDropMixin', () => {
       file = new Blob(['{}'], { type: 'application/json' });
     });
 
-    function handler(e) {
-      e.preventDefault();
-      e.detail.result = Promise.resolve({
-        model: 'test-value',
-        type: 'x-api',
-      });
-    }
-
-    it(`dispatches ${RestApiEventTypes.dataReady} when finished`, async () => {
+    it(`dispatches ${RestApiEventTypes.processFile} event`, async () => {
       const spy = sinon.spy();
-      element.addEventListener(RestApiEventTypes.dataReady, spy);
-      element.addEventListener(RestApiEventTypes.processFile, handler);
+      element.addEventListener(RestApiEventTypes.processFile, spy);
       await element[notifyApiParser](file);
       assert.isTrue(spy.called, 'Event dispatched');
-      assert.deepEqual(spy.args[0][0].detail, { model: 'test-value', type: 'x-api' });
-    });
-
-    it('rejects the promise when event not handled', async () => {
-      let message;
-      try {
-        await element[notifyApiParser](file);
-      } catch (e) {
-        message = e.message;
-      }
-      assert.equal(message, 'API processor not available');
     });
   });
 
