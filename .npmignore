@@ -2,7 +2,5 @@ coverage/
 test/
 demo/
 CONTRIBUTING.md
-.travis.yml
-polymer.json
-karma.*
 .*
+tsconfig.json
