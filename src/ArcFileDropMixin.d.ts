@@ -14,6 +14,9 @@ export const dropHandler: unique symbol;
 export const processEntries: unique symbol;
 export const notifyApiParser: unique symbol;
 
+/**
+ * @deprecated Use `@advanced-rest-client/app` instead.
+ */
 declare interface ArcFileDropMixin {
   /**
    * True when file is dragged over the element.

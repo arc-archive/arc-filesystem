@@ -1,4 +1,8 @@
-# arc-filesystem
+# Deprecated
+
+This component is deprecated. Use `@advanced-rest-client/app` instead.
+
+----
 
 A module with components and mixin function that adds support for filesystem processing in Advanced REST client
 
